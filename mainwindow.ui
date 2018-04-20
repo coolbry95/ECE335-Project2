@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1000</width>
-    <height>419</height>
+    <height>494</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -24,8 +24,8 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>300</y>
-      <width>121</width>
+      <y>370</y>
+      <width>201</width>
       <height>51</height>
      </rect>
     </property>
@@ -36,9 +36,9 @@
    <widget class="QPushButton" name="addToCartButton">
     <property name="geometry">
      <rect>
-      <x>430</x>
-      <y>310</y>
-      <width>101</width>
+      <x>410</x>
+      <y>380</y>
+      <width>141</width>
       <height>41</height>
      </rect>
     </property>
@@ -55,9 +55,9 @@
    <widget class="QPushButton" name="showCartButton">
     <property name="geometry">
      <rect>
-      <x>850</x>
-      <y>310</y>
-      <width>111</width>
+      <x>830</x>
+      <y>380</y>
+      <width>141</width>
       <height>41</height>
      </rect>
     </property>
@@ -71,7 +71,7 @@
       <x>40</x>
       <y>20</y>
       <width>931</width>
-      <height>101</height>
+      <height>151</height>
      </rect>
     </property>
     <property name="minimumSize">
@@ -105,9 +105,9 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>160</y>
-      <width>921</width>
-      <height>111</height>
+      <y>180</y>
+      <width>931</width>
+      <height>161</height>
      </rect>
     </property>
     <attribute name="horizontalHeaderVisible">

@@ -28,7 +28,10 @@ SOURCES += \
         mainwindow.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    csvreader.h \
+    builder.h \
+    databasebuilder.h
 
 FORMS += \
         mainwindow.ui \
