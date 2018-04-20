@@ -39,7 +39,9 @@ public:
     addCat(string name, string type, double weight, bool fluffy);
     addFish(string name, string type, double weight, string waterType);
     addBird(string name, string type, double weight, bool nocturnal);
-    vector<Bundle> getBundleDatabase();
+    vector<Bundle> getBundleDatabase() {
+        return bundle_database;
+    }
 
 }
 
