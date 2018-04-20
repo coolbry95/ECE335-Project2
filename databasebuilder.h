@@ -11,6 +11,10 @@
 #include "Fish.h"
 #include "Pet.h"
 #include "PetDatabase.h"
+#include "PetDatabaseSearchableByName.h"
+#include "PetDatabaseSortableByName.h"
+#include "BubbleSortIncreasing.h"
+#include "BinarySearch.h"
 
 using namespace std;
 
@@ -30,7 +34,7 @@ public:
                 addCat(name,type,weight,price,false);
             }
         case "Fish":
-            addFish(name,type,weight,specialAttribute);
+            addFish(name,type,weight,price,specialAttribute);
         case "Bird":
             if (specialAttribute == "true") {
                 addBird(name,type,weight,price,true);
@@ -38,14 +42,35 @@ public:
                 addBird(name,type,weight,price,false);
             }
         }
-    };
+    }
 
-    addBundle(string name, double price, vector<string>);
+    addBundle(string name, double price, vector<string> pets) {
+        // look up pet and add to bundle
+        Bundle b(name, price);
+
+        BubbleSortIncreasing bs;
+        PetDatabaseSortableByName petDatabaseSortableByName(pet_database);
+        bs.sort(&petDatabaseSortableByName);
+        BinarySearch s;
+        PetDatabaseSearchableByName SName(&petDatabaseSortableByName);
+        double sum = 0.0;
+        Pet *p;
+        for (int i=0; i<pets.size(); i++) {
+            SName.setQuery(pet[i]);
+            p = SName.getPet(s.search(&SName));
+            sum += p.GetPrice();
+            b.addItem(p);
+        }
+        double savings = (double)(sum-price) / sum;
+
+        b.setSavings(savings);
+        bundle_database.push_back(b);
+    }
 
     addDog(string name, string type, double weight, double price, string category) {
         Dog dog(name,type,price,weight,category);
         pet_database.insertPet(&dog);
-    };
+    }
     addCat(string name, string type, double weight, double price, bool fluffy) {
         Cat cat(name,type,price,weight,fluffy);
         pet_database.insertPet(&cat);
@@ -64,7 +89,7 @@ public:
 
     PetDatabase getPetDatabase() {
         return pet_database;
-    };
+    }
 }
 
 
