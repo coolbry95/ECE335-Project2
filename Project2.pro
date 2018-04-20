@@ -49,7 +49,9 @@ HEADERS += \
     PetDatabaseSortableByType.h \
     SearchableVector.h \
     SortableVector.h \
-    Cat.h
+    Cat.h \
+    Dog.h \
+    Fish.h
 
 FORMS += \
         mainwindow.ui \
