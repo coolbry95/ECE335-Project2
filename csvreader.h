@@ -27,7 +27,7 @@ public:
                     double price = stod(result[4]);
                     string special = result[5];   // you might have to look at 4 cases (Gogs, Fish, Bird, Cat cases to store values in special)
 
-                    addPet(clas, type, weight, price, special);
+                    addPet(clas,name, type, weight, price, special);
 
                     result.clear()
                     //update table widget rows here

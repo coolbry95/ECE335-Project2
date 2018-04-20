@@ -51,7 +51,15 @@ HEADERS += \
     SortableVector.h \
     Cat.h \
     Dog.h \
-    Fish.h
+    Fish.h \
+    sortableitemvector.h \
+    itemvector.h \
+    bundle.h \
+    item.h \
+    visitor.h \
+    pettablevisitor.h \
+    bundletablevisitor.h \
+    carttablevisitor.h
 
 FORMS += \
         mainwindow.ui \
