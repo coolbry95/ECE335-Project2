@@ -54,6 +54,9 @@ public:
 		Pet::print();
 		cout << "category: " << category << endl;
 	}
+    void Accept(Visitor *v){
+        v->VisitDog(this);
+    }
 };
 
 #endif /* DOG_H */

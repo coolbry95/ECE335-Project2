@@ -52,6 +52,9 @@ public:
 		Pet::print();
 		cout << "fluffy: " << fluffy << endl;
 	}
+    void Accept(Visitor *v){
+        v->VisitCat(this);
+    }
 };
 #endif /* CAT_H */
 

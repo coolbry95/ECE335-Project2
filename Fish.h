@@ -54,6 +54,9 @@ public:
 		Pet::print();
 		cout << "water type: " << waterType << endl;
 	}
+    void Accept(Visitor *v){
+        v->VisitFish(this);
+    }
 };
 
 #endif /* FISH_H */

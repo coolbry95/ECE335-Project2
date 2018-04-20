@@ -50,6 +50,9 @@ public:
 		Pet::print();
 		cout << "nocturnal: " << nocturnal << endl;
 	}
+    void Accept(Visitor *v){
+        v->VisitBird(this);
+    }
 };
 
 #endif /* BIRD_H */

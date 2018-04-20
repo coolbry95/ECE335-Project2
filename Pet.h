@@ -16,6 +16,7 @@
 
 #include <string>
 #include <iostream>
+#include "visitor.h"
 
 using namespace std;
 
@@ -81,6 +82,7 @@ public:
 		cout << "weight: " << weight << " ";
 		cout << "price: " << price << " ";
 	}
+    virtual void Accept(Visitor* v) = 0;
 };
 
 
