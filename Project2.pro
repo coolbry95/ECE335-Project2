@@ -31,7 +31,25 @@ HEADERS += \
         mainwindow.h \
     csvreader.h \
     builder.h \
-    databasebuilder.h
+    databasebuilder.h \
+    BinarySearch.h \
+    Bird.h \
+    BubbleSort.h \
+    BubbleSortDecreasing.h \
+    BubbleSortIncreasing.h \
+    PetDatabaseSortableByWeight.h \
+    Pet.h \
+    PetDatabase.h \
+    PetDatabaseSearchableByName.h \
+    PetDatabaseSearchableByPrice.h \
+    PetDatabaseSearchableByType.h \
+    PetDatabaseSearchableByWeight.h \
+    PetDatabaseSortableByName.h \
+    PetDatabaseSortableByPrice.h \
+    PetDatabaseSortableByType.h \
+    SearchableVector.h \
+    SortableVector.h \
+    Cat.h
 
 FORMS += \
         mainwindow.ui \

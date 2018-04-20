@@ -35,7 +35,8 @@ public:
 
     addBundle(string name, double price, vector<string>);
 
-    addDog(string name, string type, double weight, string category);
+    addDog(string name, string type, double weight, string category) {
+    };
     addCat(string name, string type, double weight, bool fluffy);
     addFish(string name, string type, double weight, string waterType);
     addBird(string name, string type, double weight, bool nocturnal);
