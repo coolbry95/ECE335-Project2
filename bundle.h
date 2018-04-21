@@ -23,7 +23,7 @@ public:
     Bundle(string n, double p): price(p), name(n) {}
 
     virtual ~Bundle() {
-        for(uint i=0; i<entries.size(); i++) delete entries[i];
+        //for(uint i=0; i<entries.size(); i++) delete entries[i];
     }
 
     void addItem(Item* entry) {

@@ -90,8 +90,8 @@ public:
         return bundle_database;
     }
 
-    PetDatabase getPetDatabase() {
-        return pet_database;
+    PetDatabase* getPetDatabase() {
+        return &pet_database;
     }
 };
 

@@ -8,83 +8,52 @@
 #include "Bird.h"
 #include "qtablewidget.h"
 #include "visitor.h"
+#include <string>
+using std::string;
 
 class PetTableVisitor : public Visitor {
 protected:
     QTableWidget* table;
 
+    void addRow(string name, string clas, double price, string special){
+        table->setRowCount(table->rowCount() + 1);
+
+        QTableWidgetItem* name_item = new QTableWidgetItem(QString::fromStdString(name));
+        table->setItem(table->rowCount() - 1, 0, name_item);
+
+        QTableWidgetItem* class_item = new QTableWidgetItem(QString::fromStdString(clas));
+        table->setItem(table->rowCount() - 1, 1, class_item);
+
+        QTableWidgetItem* price_item = new QTableWidgetItem(QString::number(price));
+        table->setItem(table->rowCount() - 1, 2, price_item);
+
+        QTableWidgetItem* special_item  = new QTableWidgetItem(QString::fromStdString(special));
+        table->setItem(table->rowCount() - 1, 3, special_item);
+    }
     void VisitBundle(Bundle* bundle){
 
     }
 
     void VisitDog(Dog* dog){
-        table->setColumnCount(table->columnCount() + 1);
-
-        QTableWidgetItem name_item(QString::fromStdString(dog->getName()));
-        table->setItem(0, table->columnCount() - 1, &name_item);
-
-        QTableWidgetItem class_item("Dog");
-        table->setItem(1, table->columnCount() - 1, &class_item);
-
-        QTableWidgetItem price_item(dog->getPrice());
-        table->setItem(2, table->columnCount() - 1, &price_item);
-
-        QTableWidgetItem special_item(QString::fromStdString(dog->getType()));
-        table->setItem(3, table->columnCount() - 1, &special_item);
+        addRow(dog->getName(), "Dog", dog->getPrice(), dog->getType());
     }
 
     void VisitCat(Cat* cat){
-        table->setColumnCount(table->columnCount() + 1);
-
-        QTableWidgetItem name_item(QString::fromStdString(cat->getName()));
-        table->setItem(0, table->columnCount() - 1, &name_item);
-
-        QTableWidgetItem class_item("Cat");
-        table->setItem(1, table->columnCount() - 1, &class_item);
-
-        QTableWidgetItem price_item(cat->getPrice());
-        table->setItem(2, table->columnCount() - 1, &price_item);
-
         string special_str = cat->getFluffy() ? "Fluffy " : "";
         special_str += cat->getType();
-        QTableWidgetItem special_item(QString::fromStdString(special_str));
-        table->setItem(3, table->columnCount() - 1, &special_item);
+        addRow(cat->getName(), "Cat", cat->getPrice(), special_str);
     }
 
     void VisitBird(Bird* bird){
-        table->setColumnCount(table->columnCount() + 1);
-
-        QTableWidgetItem name_item(QString::fromStdString(bird->getName()));
-        table->setItem(0, table->columnCount() - 1, &name_item);
-
-        QTableWidgetItem class_item("Bird");
-        table->setItem(1, table->columnCount() - 1, &class_item);
-
-        QTableWidgetItem price_item(bird->getPrice());
-        table->setItem(2, table->columnCount() - 1, &price_item);
-
         string special_str = bird->getNocturnal() ? "Nocturnal " : "Diurnal ";
         special_str += bird->getType();
-        QTableWidgetItem special_item(QString::fromStdString(special_str));
-        table->setItem(3, table->columnCount() - 1, &special_item);
+        addRow(bird->getName(), "Bird", bird->getPrice(), special_str);
     }
 
     void VisitFish(Fish* fish){
-        table->setColumnCount(table->columnCount() + 1);
-
-        QTableWidgetItem name_item(QString::fromStdString(fish->getName()));
-        table->setItem(0, table->columnCount() - 1, &name_item);
-
-        QTableWidgetItem class_item("Bird");
-        table->setItem(1, table->columnCount() - 1, &class_item);
-
-        QTableWidgetItem price_item(fish->getPrice());
-        table->setItem(2, table->columnCount() - 1, &price_item);
-
         string special_str = fish->getWaterType();
         special_str += " " + fish->getType();
-        QTableWidgetItem special_item(QString::fromStdString(special_str));
-        table->setItem(3, table->columnCount() - 1, &special_item);
+        addRow(fish->getName(), "Fish", fish->getPrice(), special_str);
     }
 
 public:

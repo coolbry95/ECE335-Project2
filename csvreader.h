@@ -19,6 +19,9 @@ public:
                     while(ss.good()) {
                         string substr;
                         getline(ss, substr, ',');
+                        if(substr.length() != 0 && *substr.rbegin() == '\r'){
+                            substr.erase(substr.length() -1);
+                        }
                         result.push_back( substr );
                     }
 

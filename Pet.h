@@ -52,7 +52,9 @@ public:
         return *this;
     }
 	
-	virtual ~Pet() {}
+    virtual ~Pet() {
+        cout << "Pet destructor" << endl;
+    }
 		
     string getName() const {
 		return name;

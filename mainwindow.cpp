@@ -20,15 +20,12 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::loadDatabase(){
-    cout << "Loading" << endl;
     reader.setBuilder(&builder);
     reader.read("Pets.csv", "Bundles.csv");
-    PetDatabase pet_database = builder.getPetDatabase();
-    builder.getPetDatabase().DisplayRecords();
+    pets = PetDatabaseSortableByName(builder.getPetDatabase());
     cout << " Made it here" << endl;
 
     bundles = builder.getBundleDatabase();
 
-    pets.DisplayRecords();
-    cout << "Loaded" << endl;
+    pet_visitor.fillTable(&pets);
 }
