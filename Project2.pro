@@ -62,7 +62,9 @@ HEADERS += \
     bundletablevisitor.h \
     carttablevisitor.h \
     shoppingcart.h \
-    shoppingcart.h
+    shoppingcart.h \
+    subject.h \
+    observer.h
 
 FORMS += \
         mainwindow.ui \

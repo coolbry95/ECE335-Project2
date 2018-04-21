@@ -25,12 +25,17 @@ MainWindow::~MainWindow()
 
 void MainWindow::openShoppingCartWindow() {
     if (!SCWindow) {
-        SCWindow = new ShoppingCart(this);
-        SCWindow->show();
-        connect(SCWindow, SIGNAL(Delete()), this, SLOT(DeleteRecord()));
-        connect(SCWindow, SIGNAL(Checkout()), this, SLOT(CheckoutCart()));
-    }
     ui->showCartButton->setEnabled(false);
+    ShoppingCart* window = new ShoppingCart(this);
+    window->show();
+    attachObserver(window);
+    connect(window, SIGNAL(observerDestroyed(Observer*)), this, SLOT(observerDeleted(Observer*)));
+    connect(window, SIGNAL(Delete()), this, SLOT(DeleteRecord()));
+    connect(window, SIGNAL(Checkout()), this, SLOT(CheckoutCart()));
+}
+
+void MainWindow::observerDeleted(Observer* observer){
+    detachObserver(observer);
 }
 
 
@@ -51,7 +56,6 @@ void MainWindow::loadDatabase(){
     reader.setBuilder(&builder);
     reader.read("Pets.csv", "Bundles.csv");
     pets = PetDatabaseSortableByName(builder.getPetDatabase());
-    cout << " Made it here" << endl;
 
     bundles = builder.getBundleDatabase();
 

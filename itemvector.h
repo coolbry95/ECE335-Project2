@@ -11,7 +11,11 @@ class ItemVector {
 private:
     vector<Item*> items;
 public:
-    int getSize() {
+    ItemVector(){}
+    ItemVector(ItemVector* v){
+        items = v->items;
+    }
+    int getSize() const {
         return items.size();
     }
 
@@ -29,13 +33,13 @@ public:
         items[j]=temp;
     }
 
-    int getItem(int i) const{
+    Item* getItem(int i) const{
         return items[i];
     }
 
-    int insertItem(int i) {
+    void insertItem(Item* i) {
         items.push_back(i);
     }
-}
+};
 
 #endif // ITEMVECTOR_H

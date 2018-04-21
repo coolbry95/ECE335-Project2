@@ -1,11 +1,14 @@
 #ifndef SORTABLEITEMVECTOR_H
 #define SORTABLEITEMVECTOR_H
 
+#include "itemvector.h"
+#include "SortableVector.h"
 
 class SortableItemVector : public ItemVector, public SortableVector {
 public:
+    SortableItemVector() : ItemVector(){}
 
-    //PetDatabaseSortableByName(PetDatabase* db) : PetDatabase(db){}
+    SortableItemVector(ItemVector* db) : ItemVector(db){}
     //PetDatabaseSortableByName(vector<Pet*> petVector) : PetDatabase(petVector){}
 
     int getSize() const {

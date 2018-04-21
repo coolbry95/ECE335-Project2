@@ -10,18 +10,22 @@
 #include "pettablevisitor.h"
 #include "BubbleSortIncreasing.h"
 #include "shoppingcart.h"
+#include "subject.h"
 
 namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow
+class MainWindow : public QMainWindow, public Subject
 {
     Q_OBJECT
 
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    ItemVector* getShoppingCart(){
+        return &shopping_cart;
+    }
 
 
 public slots:
@@ -29,6 +33,7 @@ public slots:
     void openShoppingCartWindow();
     void CheckoutCart();
     void DeleteRecord();
+    void observerDeleted(Observer*);
 
 private:
     Ui::MainWindow *ui;
@@ -39,6 +44,7 @@ private:
     DatabaseBuilder builder;
     BundleTableVisitor bundle_visitor;
     PetTableVisitor pet_visitor;
+    ItemVector shopping_cart;
 
 };
 
