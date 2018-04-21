@@ -39,6 +39,7 @@ void MainWindow::CheckoutCart() {
 }
 
 void MainWindow::loadDatabase(){
+    ui->loadDatabaseButton->setEnabled(false);
     reader.setBuilder(&builder);
     reader.read("Pets.csv", "Bundles.csv");
     pets = PetDatabaseSortableByName(builder.getPetDatabase());
@@ -47,4 +48,5 @@ void MainWindow::loadDatabase(){
     bundles = builder.getBundleDatabase();
 
     pet_visitor.fillTable(&pets);
+    bundle_visitor.fillTable(bundles);
 }

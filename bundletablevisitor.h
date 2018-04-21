@@ -9,17 +9,21 @@ class BundleTableVisitor : public Visitor {
 protected:
     QTableWidget* table;
 
+    void addRow(string name, double price, double savings){
+        table->setRowCount(table->rowCount() + 1);
+
+        QTableWidgetItem* name_item = new QTableWidgetItem(QString::fromStdString(name));
+        table->setItem(table->rowCount() - 1, 0, name_item);
+
+        QTableWidgetItem* price_item = new QTableWidgetItem(QString::number(price));
+        table->setItem(table->rowCount() - 1, 1, price_item);
+
+        QTableWidgetItem* savings_item = new QTableWidgetItem(QString::number(int(savings)) + "%");
+        table->setItem(table->rowCount() - 1, 2, savings_item);
+    }
+
     void VisitBundle(Bundle* bundle){
-        table->setColumnCount(table->columnCount() + 1);
-
-        QTableWidgetItem name_item(QString::fromStdString(bundle->getName()));
-        table->setItem(0, table->columnCount() - 1, &name_item);
-
-        QTableWidgetItem price_item(QString::number(bundle->getPrice()));
-        table->setItem(1, table->columnCount() - 1, &price_item);
-
-        QTableWidgetItem savings_item(QString::number(bundle->getSavings()) + "%");
-        table->setItem(3, table->columnCount() - 1, &savings_item);
+        addRow(bundle->getName(), bundle->getPrice(), bundle->getSavings() * 100);
     }
 
 
@@ -45,6 +49,7 @@ public:
 
     void setTable(QTableWidget* table_in){
         table = table_in;
+        table->setColumnCount(3);
     }
 
     void fillTable(vector<Bundle> bundles){

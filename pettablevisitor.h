@@ -64,7 +64,7 @@ public:
     }
 
     void fillTable(PetDatabase* database){
-        table->clearContents();
+        table->setRowCount(0);
         for(int i = 0; i < database->getSize(); i++){
             database->getPet(i)->Accept(this);
         }
