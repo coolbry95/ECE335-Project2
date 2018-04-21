@@ -20,6 +20,7 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::loadDatabase(){
+    ui->loadDatabaseButton->setEnabled(false);
     reader.setBuilder(&builder);
     reader.read("Pets.csv", "Bundles.csv");
     pets = PetDatabaseSortableByName(builder.getPetDatabase());

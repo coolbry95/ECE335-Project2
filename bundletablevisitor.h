@@ -18,12 +18,12 @@ protected:
         QTableWidgetItem* price_item = new QTableWidgetItem(QString::number(price));
         table->setItem(table->rowCount() - 1, 1, price_item);
 
-        QTableWidgetItem* savings_item = new QTableWidgetItem(QString::number(savings) + "%");
+        QTableWidgetItem* savings_item = new QTableWidgetItem(QString::number(int(savings)) + "%");
         table->setItem(table->rowCount() - 1, 2, savings_item);
     }
 
     void VisitBundle(Bundle* bundle){
-        addRow(bundle->getName(), bundle->getPrice(), bundle->getSavings());
+        addRow(bundle->getName(), bundle->getPrice(), bundle->getSavings() * 100);
     }
 
 
