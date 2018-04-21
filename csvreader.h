@@ -2,6 +2,7 @@
 #define CSVREADER_H
 
 #include "builder.h"
+#include "PetDatabase.h"
 #include <fstream>
 #include <sstream>
 
@@ -71,6 +72,10 @@ public:
             file.close();
         }
     };
+
+    //void write(string out_file) {
+    //    builder->writeCSV();
+    //}
 
     void setBuilder(Builder* b) {
         builder = b;

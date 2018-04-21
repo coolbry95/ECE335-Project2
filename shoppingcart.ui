@@ -17,10 +17,10 @@
    <widget class="QPushButton" name="deleteButton">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>200</y>
-      <width>80</width>
-      <height>23</height>
+      <x>20</x>
+      <y>290</y>
+      <width>151</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
@@ -30,10 +30,10 @@
    <widget class="QPushButton" name="checkoutButton">
     <property name="geometry">
      <rect>
-      <x>400</x>
-      <y>200</y>
-      <width>80</width>
-      <height>23</height>
+      <x>840</x>
+      <y>290</y>
+      <width>141</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
@@ -43,10 +43,10 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>200</y>
-      <width>81</width>
-      <height>16</height>
+      <x>310</x>
+      <y>260</y>
+      <width>161</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
@@ -58,8 +58,8 @@
      <rect>
       <x>55</x>
       <y>30</y>
-      <width>381</width>
-      <height>61</height>
+      <width>911</width>
+      <height>201</height>
      </rect>
     </property>
    </widget>

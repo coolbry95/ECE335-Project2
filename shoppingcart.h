@@ -20,6 +20,7 @@ public:
 signals:
     void Delete();
     void Checkout();
+    void Close();
 
 private slots:
     void on_deleteButton_clicked();

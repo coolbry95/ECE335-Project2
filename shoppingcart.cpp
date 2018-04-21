@@ -13,7 +13,6 @@ ShoppingCart::~ShoppingCart()
     delete ui;
 }
 
-
 void ShoppingCart::on_checkoutButton_clicked()
 {
     emit Checkout();

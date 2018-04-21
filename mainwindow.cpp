@@ -30,12 +30,16 @@ void MainWindow::openShoppingCartWindow() {
     }
 }
 
+
 void MainWindow::DeleteRecord() {
 
 }
 
 void MainWindow::CheckoutCart() {
-
+    // call add pets here
+    // filled in from
+    // SCWindow->ui->deleteButton->setEnabled(false);
+    builder.writeOutfile("checout.csv");
 }
 
 void MainWindow::loadDatabase(){
