@@ -28,4 +28,5 @@ void MainWindow::loadDatabase(){
     bundles = builder.getBundleDatabase();
 
     pet_visitor.fillTable(&pets);
+    bundle_visitor.fillTable(bundles);
 }
