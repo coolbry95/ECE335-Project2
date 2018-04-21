@@ -35,6 +35,9 @@ public slots:
     void DeleteRecord();
     void observerDeleted(Observer*);
     void on_addToCart();
+    void petSelectionChanged(QItemSelection, QItemSelection);
+    void bundleSelectionChanged(QItemSelection, QItemSelection);
+
 
 private:
     Ui::MainWindow *ui;

@@ -17,6 +17,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->loadDatabaseButton, SIGNAL(pressed()), this, SLOT(loadDatabase()));
     connect(ui->showCartButton, SIGNAL(pressed()), this, SLOT(openShoppingCartWindow()));
     connect(ui->addToCartButton, SIGNAL(pressed()), this, SLOT(on_addToCart()));
+    connect(ui->databaseTable->selectionModel(), SIGNAL(selectionChanged(QItemSelection, QItemSelection)), this, SLOT(petSelectionChanged(QItemSelection, QItemSelection)));
+    connect(ui->bundleTable->selectionModel(), SIGNAL(selectionChanged(QItemSelection, QItemSelection)), this, SLOT(bundleSelectionChanged(QItemSelection,QItemSelection)));
+
 }
 
 MainWindow::~MainWindow()
@@ -87,4 +90,16 @@ void MainWindow::on_addToCart(){
         shopping_cart.insertItem(&(bundles[row]));
     }
     notifyObservers();
+}
+
+void MainWindow::petSelectionChanged(QItemSelection to, QItemSelection from){
+    if(!to.empty()){
+        ui->bundleTable->clearSelection();
+    }
+}
+
+void MainWindow::bundleSelectionChanged(QItemSelection to, QItemSelection from){
+    if(!to.empty()){
+        ui->databaseTable->clearSelection();
+    }
 }
