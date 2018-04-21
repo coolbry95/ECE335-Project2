@@ -24,6 +24,8 @@ using namespace std;
 class PetDatabaseSearchableByName : public PetDatabase, public SearchableVector {
 public:
 
+    PetDatabaseSearchableByName() : PetDatabase(){}
+
     PetDatabaseSearchableByName(PetDatabase* db) : PetDatabase(db){}
     PetDatabaseSearchableByName(vector<Pet*> petVector) : PetDatabase(petVector){}
     

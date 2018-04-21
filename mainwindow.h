@@ -34,11 +34,12 @@ public slots:
     void CheckoutCart();
     void DeleteRecord();
     void observerDeleted(Observer*);
+    void on_addToCart();
 
 private:
     Ui::MainWindow *ui;
     ShoppingCart* SCWindow;
-    PetDatabaseSortableByName pets;
+    PetDatabaseSearchableByName pets;
     vector<Bundle> bundles;
     CSVReader reader;
     DatabaseBuilder builder;

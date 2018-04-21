@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "observer.h"
 #include "sortableitemvector.h"
+#include "carttablevisitor.h"
 
 
 namespace Ui {
@@ -34,6 +35,7 @@ private slots:
 private:
     Ui::ShoppingCart *ui;
     SortableItemVector shopping_cart;
+    CartTableVisitor cart_visitor;
 };
 
 #endif // SHOPPINGCART_H

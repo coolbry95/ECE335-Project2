@@ -11,6 +11,8 @@ ShoppingCart::ShoppingCart(QWidget *parent) :
     ui(new Ui::ShoppingCart)
 {
     ui->setupUi(this);
+    cart_visitor.setTable(ui->tableWidget);
+
 }
 
 ShoppingCart::~ShoppingCart()
@@ -31,10 +33,10 @@ void ShoppingCart::on_deleteButton_clicked()
 
 void ShoppingCart::update(Subject* s){
     shopping_cart = SortableItemVector(s->getShoppingCart());
+    cart_visitor.fillTable(&shopping_cart);
 }
 
 void ShoppingCart::closeEvent(QCloseEvent *event){
-    cout << "Closed" << endl;
     emit observerDestroyed(this);
     Delete();
 }
