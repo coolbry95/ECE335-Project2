@@ -19,12 +19,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
-    if (SCWindow) delete SCWindow;
     delete ui;
 }
 
 void MainWindow::openShoppingCartWindow() {
-    if (!SCWindow) {
     ui->showCartButton->setEnabled(false);
     ShoppingCart* window = new ShoppingCart(this);
     window->show();
