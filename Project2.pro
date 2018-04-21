@@ -25,7 +25,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    shoppingcart.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -59,8 +60,11 @@ HEADERS += \
     visitor.h \
     pettablevisitor.h \
     bundletablevisitor.h \
-    carttablevisitor.h
+    carttablevisitor.h \
+    shoppingcart.h \
+    shoppingcart.h
 
 FORMS += \
         mainwindow.ui \
+    shoppingcart.ui \
     shoppingcart.ui

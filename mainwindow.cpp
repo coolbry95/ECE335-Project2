@@ -12,11 +12,30 @@ MainWindow::MainWindow(QWidget *parent) :
     pet_visitor.setTable(ui->databaseTable);
     bundle_visitor.setTable(ui->bundleTable);
     connect(ui->loadDatabaseButton, SIGNAL(pressed()), this, SLOT(loadDatabase()));
+    connect(ui->showCartButton, SIGNAL(pressed()), this, SLOT(openShoppingCartWindow()));
 }
 
 MainWindow::~MainWindow()
 {
+    if (SCWindow) delete SCWindow;
     delete ui;
+}
+
+void MainWindow::openShoppingCartWindow() {
+    if (!SCWindow) {
+        SCWindow = new ShoppingCart(this);
+        SCWindow->show();
+        connect(SCWindow, SIGNAL(Delete()), this, SLOT(DeleteRecord()));
+        connect(SCWindow, SIGNAL(Checkout()), this, SLOT(CheckoutCart()));
+    }
+}
+
+void MainWindow::DeleteRecord() {
+
+}
+
+void MainWindow::CheckoutCart() {
+
 }
 
 void MainWindow::loadDatabase(){

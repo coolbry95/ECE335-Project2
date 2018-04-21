@@ -9,6 +9,7 @@
 #include "bundletablevisitor.h"
 #include "pettablevisitor.h"
 #include "BubbleSortIncreasing.h"
+#include "shoppingcart.h"
 
 namespace Ui {
 class MainWindow;
@@ -22,11 +23,16 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+
 public slots:
     void loadDatabase();
+    void openShoppingCartWindow();
+    void CheckoutCart();
+    void DeleteRecord();
 
 private:
     Ui::MainWindow *ui;
+    ShoppingCart* SCWindow;
     PetDatabaseSortableByName pets;
     vector<Bundle> bundles;
     CSVReader reader;
