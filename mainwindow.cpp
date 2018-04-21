@@ -28,6 +28,7 @@ void MainWindow::openShoppingCartWindow() {
         connect(SCWindow, SIGNAL(Delete()), this, SLOT(DeleteRecord()));
         connect(SCWindow, SIGNAL(Checkout()), this, SLOT(CheckoutCart()));
     }
+    ui->showCartButton->setEnabled(false);
 }
 
 
@@ -53,4 +54,5 @@ void MainWindow::loadDatabase(){
 
     pet_visitor.fillTable(&pets);
     bundle_visitor.fillTable(bundles);
+    ui->loadDatabaseButton->setEnabled(false);
 }
