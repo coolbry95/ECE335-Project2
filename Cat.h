@@ -42,7 +42,7 @@ public:
 	
 	virtual ~Cat() {}
 	
-	bool GetFluffy() const {
+    bool getFluffy() const {
 		return fluffy;
 	}
 	void SetFluffy(const bool f) {

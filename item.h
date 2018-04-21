@@ -8,11 +8,12 @@ using namespace std;
 
 class Item {
 public:
-    virtual double getPrice() const;
+    virtual ~Item() {}
+    virtual double getPrice() const = 0;
 
-    virtual void Accept(Visitor* visitor);
+    virtual void Accept(Visitor* visitor) = 0;
 
-    virtual string getName() const;
-}
+    virtual string getName() const = 0;
+};
 
 #endif // ITEM_H

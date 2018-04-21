@@ -44,7 +44,7 @@ public:
 	
 	virtual ~Dog() {}
 	
-	string GetCategory() const {
+    string getCategory() const {
 		return category;
 	}
 	void SetCategory(const string c) {

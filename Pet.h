@@ -17,15 +17,17 @@
 #include <string>
 #include <iostream>
 #include "visitor.h"
+#include "item.h"
 
 using namespace std;
 
-class Pet{
+class Pet : public Item {
 private:
 	string name;
 	string type;
-	unsigned int weight;
 	double price;
+    unsigned int weight;
+
 
 public:
 	Pet(string n, string t, double p, unsigned int w):
@@ -52,16 +54,16 @@ public:
 	
 	virtual ~Pet() {}
 		
-	string GetName() const {
+    string getName() const {
 		return name;
 	}
-	string GetType() const {
+    string getType() const {
 		return type;
 	}
-	unsigned int GetWeight() const {
+    unsigned int getWeight() const {
 		return weight;
 	}
-	double GetPrice() const {
+    double getPrice() const {
 		return price;
 	}
 	void SetPrice(const double p) {

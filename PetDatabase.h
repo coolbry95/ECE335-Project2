@@ -25,14 +25,18 @@ public:
     
     PetDatabase(PetDatabase* db){
         pets = vector<Pet*>();
-        for(int i = 0; i < db->pets.size(); i++){
+        for(uint i = 0; i < db->pets.size(); i++){
             insertPet(*db->pets[i]);
         }
+    }
+
+    PetDatabase(){
+
     }
     
     PetDatabase(vector<Pet*> petVector){
         pets = vector<Pet*>();
-        for(int i = 0; i < petVector.size(); i++){
+        for(uint i = 0; i < petVector.size(); i++){
             insertPet(*petVector[i]);
         }
     }
@@ -40,7 +44,7 @@ public:
     PetDatabase(const PetDatabase& db) {
         if (this != &db) {
             pets = vector<Pet*>();
-            for(int i = 0; i < db.pets.size(); i++){
+            for(uint i = 0; i < db.pets.size(); i++){
                 insertPet(*db.pets[i]);
             }
         }
@@ -49,7 +53,7 @@ public:
     PetDatabase& operator=(const PetDatabase& db) {
         if (this != &db) {
             pets = vector<Pet*>();
-            for(int i = 0; i < db.pets.size(); i++){
+            for(uint i = 0; i < db.pets.size(); i++){
                 insertPet(*db.pets[i]);
             }
         }
@@ -69,7 +73,8 @@ public:
     }
     
     void DisplayRecords() const {
-        for(int i = 0; i < pets.size(); i++){
+        for(uint i = 0; i < pets.size(); i++){
+            cout << "printing" << endl;
             pets[i]->print();
         }
     }

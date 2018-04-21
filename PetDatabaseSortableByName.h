@@ -20,11 +20,12 @@
 class PetDatabaseSortableByName : public PetDatabase, public SortableVector {
 public:
 	
+    PetDatabaseSortableByName() : PetDatabase(){}
     PetDatabaseSortableByName(PetDatabase* db) : PetDatabase(db){}
     PetDatabaseSortableByName(vector<Pet*> petVector) : PetDatabase(petVector){}
     
-	int getSize() const {
-		return PetDatabase::getSize();
+    int getSize() const {
+        return PetDatabase::getSize();
 	}
 	
 	void swap(int i, int j) {
@@ -32,7 +33,7 @@ public:
 	}
 	
 	bool smaller(int i, int j) const {
-		if(PetDatabase::getPet(i)->GetName() < PetDatabase::getPet(j)->GetName())
+        if(PetDatabase::getPet(i)->getName() < PetDatabase::getPet(j)->getName())
             return true;
         else
             return false;

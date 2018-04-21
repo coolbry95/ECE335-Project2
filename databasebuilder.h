@@ -15,6 +15,7 @@
 #include "PetDatabaseSortableByName.h"
 #include "BubbleSortIncreasing.h"
 #include "BinarySearch.h"
+#include "bundle.h"
 
 using namespace std;
 
@@ -23,19 +24,21 @@ private:
     PetDatabase pet_database;
     vector<Bundle> bundle_database;
 public:
-    addPet(string clas, string name, string type, double weight, double price, string specialAttribute) {
-        switch(clas) {
-        case "Dog":
+    void addPet(string clas, string name, string type, double weight, double price, string specialAttribute) {
+        if(clas == "Dog"){
             addDog(name,type,weight,price,specialAttribute);
-        case "Cat":
+        }
+        else if (clas == "Cat"){
             if (specialAttribute == "true") {
                 addCat(name,type,weight,price,true);
             } else {
                 addCat(name,type,weight,price,false);
             }
-        case "Fish":
+        }
+        else if (clas == "Fish"){
             addFish(name,type,weight,price,specialAttribute);
-        case "Bird":
+        }
+        else if (clas == "Bird"){
             if (specialAttribute == "true") {
                 addBird(name,type,weight,price,true);
             } else {
@@ -44,44 +47,44 @@ public:
         }
     }
 
-    addBundle(string name, double price, vector<string> pets) {
+    void addBundle(string name, double price, vector<string> pets) {
         // look up pet and add to bundle
-        Bundle b(name, price);
+        Bundle* b = new Bundle(name, price);
 
         BubbleSortIncreasing bs;
-        PetDatabaseSortableByName petDatabaseSortableByName(pet_database);
+        PetDatabaseSortableByName petDatabaseSortableByName(&pet_database);
         bs.sort(&petDatabaseSortableByName);
         BinarySearch s;
         PetDatabaseSearchableByName SName(&petDatabaseSortableByName);
         double sum = 0.0;
         Pet *p;
-        for (int i=0; i<pets.size(); i++) {
-            SName.setQuery(pet[i]);
+        for (uint i=0; i<pets.size(); i++) {
+            SName.setQuery(pets[i]);
             p = SName.getPet(s.search(&SName));
-            sum += p.GetPrice();
-            b.addItem(p);
+            sum += p->getPrice();
+            b->addItem(p);
         }
         double savings = (double)(sum-price) / sum;
 
-        b.setSavings(savings);
-        bundle_database.push_back(b);
+        b->setSavings(savings);
+        bundle_database.push_back(*b);
     }
 
-    addDog(string name, string type, double weight, double price, string category) {
-        Dog dog(name,type,price,weight,category);
-        pet_database.insertPet(&dog);
+    void addDog(string name, string type, double weight, double price, string category) {
+        Dog* dog = new Dog(name,type,price,weight,category);
+        pet_database.insertPet(*dog);
     }
-    addCat(string name, string type, double weight, double price, bool fluffy) {
-        Cat cat(name,type,price,weight,fluffy);
-        pet_database.insertPet(&cat);
+    void addCat(string name, string type, double weight, double price, bool fluffy) {
+        Cat* cat = new Cat(name,type,price,weight,fluffy);
+        pet_database.insertPet(*cat);
     }
-    addFish(string name, string type, double weight, double price, string waterType) {
-        Fish fish(name,type,price,weight,waterType);
-        pet_database.insertPet(&fish);
+    void addFish(string name, string type, double weight, double price, string waterType) {
+        Fish* fish = new Fish(name,type,price,weight,waterType);
+        pet_database.insertPet(*fish);
     }
-    addBird(string name, string type, double weight,double price, bool nocturnal) {
-        Bird bird(name,type,price,weight,nocturnal);
-        pet_database.insertPet(&bird);
+    void addBird(string name, string type, double weight,double price, bool nocturnal) {
+        Bird* bird = new Bird(name,type,price,weight,nocturnal);
+        pet_database.insertPet(*bird);
     }
     vector<Bundle> getBundleDatabase() {
         return bundle_database;
@@ -90,7 +93,7 @@ public:
     PetDatabase getPetDatabase() {
         return pet_database;
     }
-}
+};
 
 
 

@@ -40,7 +40,7 @@ public:
 	
 	virtual ~Bird() {}
 	
-	bool GetNocturnal() const {
+    bool getNocturnal() const {
 		return nocturnal;
 	}
 	void SetNocturnal(const bool n) {

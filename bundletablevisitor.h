@@ -3,48 +3,54 @@
 
 #include <qtablewidget.h>
 #include "PetDatabase.h"
+#include "bundle.h"
 
-class BundleTableVisitor {
+class BundleTableVisitor : public Visitor {
 protected:
     QTableWidget* table;
 
-    VisitBundle(Bundle* bundle){
+    void VisitBundle(Bundle* bundle){
         table->setColumnCount(table->columnCount() + 1);
 
-        QTableWidgetItem name_item(bundle->getName());
-        table->setItem(0, table->columnCount() - 1, name_item);
+        QTableWidgetItem name_item(QString::fromStdString(bundle->getName()));
+        table->setItem(0, table->columnCount() - 1, &name_item);
 
         QTableWidgetItem price_item(QString::number(bundle->getPrice()));
-        table->setItem(1, table->columnCount() - 1, price);
+        table->setItem(1, table->columnCount() - 1, &price_item);
 
         QTableWidgetItem savings_item(QString::number(bundle->getSavings()) + "%");
-        table->setItem(3, table->columnCount() - 1, savings_item);
+        table->setItem(3, table->columnCount() - 1, &savings_item);
     }
 
 
-    VisitDog(Dog* dog){
+    void VisitDog(Dog* dog){
 
     }
 
-    VisitCat(Cat* cat){
+    void VisitCat(Cat* cat){
 
     }
 
-    VisitBird(Bird* bird){
+    void VisitBird(Bird* bird){
 
     }
 
-    VisitFish(Fish* fish){
+    void VisitFish(Fish* fish){
 
     }
 
 public:
-    BundleTableVisitor(QTableWidget* in_table){
-        table = in_table;
+    BundleTableVisitor(){
     }
 
-    fillTable(PetDatabase* database){
+    void setTable(QTableWidget* table_in){
+        table = table_in;
+    }
 
+    void fillTable(vector<Bundle> bundles){
+        for(uint i = 0; i < bundles.size(); i++){
+            bundles[i].Accept(this);
+        }
     }
 };
 

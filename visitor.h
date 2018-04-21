@@ -1,14 +1,18 @@
 #ifndef VISITOR_H
 #define VISITOR_H
-class Pet;
 class Bundle;
+class Dog;
+class Cat;
+class Bird;
+class Fish;
 
 class Visitor {
-    virtual VisitBundle(Bundle*) = 0;
-    virtual VisitDog(Dog*) = 0;
-    virtual VisitCat(Cat*) = 0;
-    virtual VisitBird(Bird*) = 0;
-    virtual VisitFish(Fish*) = 0;
+public:
+    virtual void VisitBundle(Bundle*) = 0;
+    virtual void VisitDog(Dog*) = 0;
+    virtual void VisitCat(Cat*) = 0;
+    virtual void VisitBird(Bird*) = 0;
+    virtual void VisitFish(Fish*) = 0;
 };
 
 #endif // VISITOR_H

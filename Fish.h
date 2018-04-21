@@ -44,7 +44,7 @@ public:
 	
 	virtual ~Fish() {}
 	
-	string GetWaterType() const {
+    string getWaterType() const {
 		return waterType;
 	}
 	void SetWaterType(const string w) {

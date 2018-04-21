@@ -32,7 +32,7 @@ public:
     }
 
     Comparison compareAt(size_t i) const {
-        string name = getPet(i)->GetName();
+        string name = getPet(i)->getName();
 
         if (name == query) {
             return EQUAL;
