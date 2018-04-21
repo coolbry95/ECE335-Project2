@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "shoppingcart.h"
+#include "ui_shoppingcart.h"
 
 #include <iostream>
 
@@ -41,6 +43,7 @@ void MainWindow::CheckoutCart() {
     // filled in from
     // SCWindow->ui->deleteButton->setEnabled(false);
     builder.writeOutfile("checout.csv");
+    SCWindow->getUi()->checkoutButton->setEnabled(false);
 }
 
 void MainWindow::loadDatabase(){
