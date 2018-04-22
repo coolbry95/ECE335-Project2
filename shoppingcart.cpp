@@ -7,6 +7,7 @@
 #include "BubbleSortIncreasing.h"
 
 #include <iostream>
+#include <fstream>
 using std::endl;
 using std::cout;
 
@@ -35,7 +36,16 @@ void ShoppingCart::on_checkoutButton_clicked()
     this->ui->label->setText("Total Price: $" + QString::number(shopping_cart_visitor.calculateTotalPrice(&shopping_cart)));
     this->setEnabled(false);
 
-    shopping_cart_visitor.writeOutfile(&shopping_cart);
+    ofstream file("Checkout.csv");
+    if (file.is_open()) {
+
+        for (int i = 0; i < shopping_cart.getSize(); i++) {
+            Item *p = shopping_cart.getItem(i);
+            file << p->getName() << "," << p->getPrice() << endl;
+        }
+
+        file.close();
+    }
 }
 
 void ShoppingCart::on_deleteButton_clicked()
