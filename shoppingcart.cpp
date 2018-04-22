@@ -23,6 +23,9 @@ ShoppingCart::~ShoppingCart()
 void ShoppingCart::on_checkoutButton_clicked()
 {
     emit Checkout();
+    BubbleSortIncreasing bsi;
+    bsi.sort(&shopping_cart);
+    cart_visitor.fillTable(&shopping_cart);
     this->setEnabled(false);
 }
 
