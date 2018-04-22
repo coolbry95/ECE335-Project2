@@ -3,6 +3,9 @@
 #include "subject.h"
 #include "shoppingcartvisitor.h"
 
+#include "BubbleSort.h"
+#include "BubbleSortIncreasing.h"
+
 #include <iostream>
 using std::endl;
 using std::cout;
@@ -28,8 +31,11 @@ void ShoppingCart::on_checkoutButton_clicked()
     bsi.sort(&shopping_cart);
     cart_table_visitor.fillTable(&shopping_cart);
     ShoppingCartVisitor shopping_cart_visitor;
-    this->ui->label->setText("Total Price: " + QString::number(shopping_cart_visitor.calculateTotalPrice(&shopping_cart)));
+    this->ui->label->setStyleSheet("font-weight: bold; color: red");
+    this->ui->label->setText("Total Price: $" + QString::number(shopping_cart_visitor.calculateTotalPrice(&shopping_cart)));
     this->setEnabled(false);
+
+    shopping_cart_visitor.writeOutfile(&shopping_cart);
 }
 
 void ShoppingCart::on_deleteButton_clicked()

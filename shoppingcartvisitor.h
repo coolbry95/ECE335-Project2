@@ -10,6 +10,7 @@
 #include "Cat.h"
 #include "Fish.h"
 #include "Bird.h"
+#include <fstream>
 
 class ShoppingCartVisitor : public Visitor {
 protected:
@@ -47,6 +48,26 @@ public:
             items->getItem(i)->Accept(this);
         }
         return total_price;
+    }
+
+    void writeOutfile(ItemVector* items) {
+
+        ofstream file("Checkout.csv");
+        if (file.is_open()) {
+
+            for (int i = 0; i < items->getSize(); i++) {
+                Item *p = items->getItem(i);
+                file << p->getName() << "," << p->getPrice() << endl;
+            }
+
+            /*
+            for (uint i = 0; i < bundle_database.size(); i++) {
+                file << bundle_database[i].getName() << "," << bundle_database[i].getPrice() << endl;
+            }
+            */
+
+            file.close();
+        }
     }
 };
 

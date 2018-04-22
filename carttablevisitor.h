@@ -65,6 +65,8 @@ public:
             items->getItem(i)->Accept(this);
         }
     }
+
+
 };
 
 #endif // CARTTABLEVISITOR_H

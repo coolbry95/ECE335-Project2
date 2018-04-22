@@ -50,7 +50,7 @@ void MainWindow::DeleteRecord(Item* item) {
 }
 
 void MainWindow::CheckoutCart() {
-    builder.writeOutfile("checkout.csv");
+    //builder.writeOutfile("checkout.csv");
     this->setEnabled(false);
 }
 

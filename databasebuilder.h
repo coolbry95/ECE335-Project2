@@ -17,7 +17,7 @@
 #include "BinarySearch.h"
 #include "bundle.h"
 
-#include <fstream>
+
 
 using namespace std;
 
@@ -94,25 +94,6 @@ public:
 
     PetDatabase* getPetDatabase() {
         return &pet_database;
-    }
-
-    void writeOutfile(string out) {
-
-        ofstream file(out);
-        if (file.is_open()) {
-
-            for (int i = 0; i < pet_database.getSize(); i++) {
-                Pet *p = pet_database.getPet(i);
-                file << p->getName() << "," << p->getPrice() << endl;
-            }
-
-
-            for (uint i = 0; i < bundle_database.size(); i++) {
-                file << bundle_database[i].getName() << "," << bundle_database[i].getPrice() << endl;
-            }
-
-            file.close();
-        }
     }
 };
 
