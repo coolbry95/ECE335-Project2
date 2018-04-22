@@ -22,8 +22,8 @@ ShoppingCart::~ShoppingCart()
 
 void ShoppingCart::on_checkoutButton_clicked()
 {
-
     emit Checkout();
+    this->setEnabled(false);
 }
 
 void ShoppingCart::on_deleteButton_clicked()

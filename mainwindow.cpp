@@ -47,15 +47,11 @@ void MainWindow::observerDeleted(Observer* observer){
 void MainWindow::DeleteRecord(Item* item) {
     shopping_cart.removeItem(item);
     notifyObservers();
-    cout << "Observers notified of deleted record";
 }
 
 void MainWindow::CheckoutCart() {
-    // call add pets here
-    // filled in from
-    // SCWindow->ui->deleteButton->setEnabled(false);
     builder.writeOutfile("checkout.csv");
-    // TODO: disable button (use a slot)
+    this->setEnabled(false);
 }
 
 void MainWindow::loadDatabase(){
@@ -82,13 +78,11 @@ void MainWindow::on_addToCart(){
     QModelIndexList selectedPets = ui->databaseTable->selectionModel()->selectedRows();
     for(int i = 0; i < selectedPets.count(); i++){
         int row = selectedPets[i].row();
-        cout << "Selection: " << row << endl;
         shopping_cart.insertItem(pets.getPet(row));
     }
     QModelIndexList selectedBundles = ui->bundleTable->selectionModel()->selectedRows();
     for(int i = 0; i < selectedBundles.count(); i++){
         int row = selectedBundles[i].row();
-        cout << "Selection: " << row << endl;
         shopping_cart.insertItem(&(bundles[row]));
     }
     notifyObservers();
