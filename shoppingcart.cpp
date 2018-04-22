@@ -1,6 +1,7 @@
 #include "shoppingcart.h"
 #include "ui_shoppingcart.h"
 #include "subject.h"
+#include "shoppingcartvisitor.h"
 
 #include <iostream>
 using std::endl;
@@ -11,7 +12,7 @@ ShoppingCart::ShoppingCart(QWidget *parent) :
     ui(new Ui::ShoppingCart)
 {
     ui->setupUi(this);
-    cart_visitor.setTable(ui->tableWidget);
+    cart_table_visitor.setTable(ui->tableWidget);
 
 }
 
@@ -25,7 +26,9 @@ void ShoppingCart::on_checkoutButton_clicked()
     emit Checkout();
     BubbleSortIncreasing bsi;
     bsi.sort(&shopping_cart);
-    cart_visitor.fillTable(&shopping_cart);
+    cart_table_visitor.fillTable(&shopping_cart);
+    ShoppingCartVisitor shopping_cart_visitor;
+    this->ui->label->setText("Total Price: " + QString::number(shopping_cart_visitor.calculateTotalPrice(&shopping_cart)));
     this->setEnabled(false);
 }
 
@@ -40,7 +43,7 @@ void ShoppingCart::on_deleteButton_clicked()
 
 void ShoppingCart::update(Subject* s){
     shopping_cart = SortableItemVector(s->getShoppingCart());
-    cart_visitor.fillTable(&shopping_cart);
+    cart_table_visitor.fillTable(&shopping_cart);
 }
 
 void ShoppingCart::closeEvent(QCloseEvent *event){

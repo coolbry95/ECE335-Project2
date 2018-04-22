@@ -35,7 +35,7 @@ private slots:
 private:
     Ui::ShoppingCart *ui;
     SortableItemVector shopping_cart;
-    CartTableVisitor cart_visitor;
+    CartTableVisitor cart_table_visitor;
 };
 
 #endif // SHOPPINGCART_H
