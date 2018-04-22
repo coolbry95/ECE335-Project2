@@ -28,7 +28,11 @@ void ShoppingCart::on_checkoutButton_clicked()
 
 void ShoppingCart::on_deleteButton_clicked()
 {
-    emit Delete();
+    QModelIndexList selectedPets = ui->tableWidget->selectionModel()->selectedRows();
+    for(int i = 0; i < selectedPets.count(); i++){
+        int row = selectedPets[i].row();
+        emit Delete(shopping_cart.getItem(row));
+    }
 }
 
 void ShoppingCart::update(Subject* s){
@@ -38,6 +42,5 @@ void ShoppingCart::update(Subject* s){
 
 void ShoppingCart::closeEvent(QCloseEvent *event){
     emit observerDestroyed(this);
-    Delete();
 }
 

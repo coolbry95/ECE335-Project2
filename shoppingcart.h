@@ -24,7 +24,7 @@ public:
     void update(Subject* s);
 
 signals:
-    void Delete();
+    void Delete(Item*);
     void Checkout();
     void observerDestroyed(Observer*);
 

@@ -58,6 +58,9 @@ public:
 
     void fillTable(ItemVector* items){
         rows = 0;
+        table->clearSelection();
+        table->clearContents();
+        table->setRowCount(0);
         for(int i = 0; i < items->getSize(); i++){
             items->getItem(i)->Accept(this);
         }

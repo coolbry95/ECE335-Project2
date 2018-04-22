@@ -33,7 +33,7 @@ void MainWindow::openShoppingCartWindow() {
     window->show();
     attachObserver(window);
     connect(window, SIGNAL(observerDestroyed(Observer*)), this, SLOT(observerDeleted(Observer*)));
-    connect(window, SIGNAL(Delete()), this, SLOT(DeleteRecord()));
+    connect(window, SIGNAL(Delete(Item*)), this, SLOT(DeleteRecord(Item*)));
     connect(window, SIGNAL(Checkout()), this, SLOT(CheckoutCart()));
     notifyObservers();
 }
@@ -44,8 +44,10 @@ void MainWindow::observerDeleted(Observer* observer){
 }
 
 
-void MainWindow::DeleteRecord() {
-
+void MainWindow::DeleteRecord(Item* item) {
+    shopping_cart.removeItem(item);
+    notifyObservers();
+    cout << "Observers notified of deleted record";
 }
 
 void MainWindow::CheckoutCart() {

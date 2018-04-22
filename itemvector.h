@@ -19,6 +19,14 @@ public:
         return items.size();
     }
 
+    void removeItem(Item* item){
+        vector<Item*>::iterator it = find(items.begin(), items.end(), item);
+        if(it != items.end()){
+            items.erase(it);
+        }
+
+    }
+
     // need this?
     virtual bool smaller(int i, int j) const {
         if(getItem(i) < getItem(j))

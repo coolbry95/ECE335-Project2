@@ -32,7 +32,7 @@ public slots:
     void loadDatabase();
     void openShoppingCartWindow();
     void CheckoutCart();
-    void DeleteRecord();
+    void DeleteRecord(Item*);
     void observerDeleted(Observer*);
     void on_addToCart();
     void petSelectionChanged(QItemSelection, QItemSelection);
