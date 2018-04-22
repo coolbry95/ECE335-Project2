@@ -64,7 +64,8 @@ HEADERS += \
     shoppingcart.h \
     shoppingcart.h \
     subject.h \
-    observer.h
+    observer.h \
+    shoppingcartvisitor.h
 
 FORMS += \
         mainwindow.ui \
